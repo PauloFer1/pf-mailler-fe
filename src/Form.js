@@ -60,7 +60,7 @@ class Form extends Component {
             </div>
             <div className="form-group">
             <label htmlFor="toEmail">To email:</label>
-        <input type="toEmail" className="form-control" name="toEmail" value={this.state.toEmail}
+        <input type="email" className="form-control" name="toEmail" value={this.state.toEmail}
         onChange={(event) => this.updateField('toEmail', event.target.value)} class="input1" />
             </div>
             <div className="form-group">
