@@ -9,7 +9,8 @@ class Form extends Component {
         this.state = {
             name: '',
             subject: '',
-            email: '',
+            fromEmail: '',
+            toEmail: '',
             body: ''
         };
 
@@ -24,8 +25,8 @@ class Form extends Component {
     handleSubmit(event) {
         axios.post("https://pf-mailler.herokuapp.com/send",
             { "emailParameters": {
-                    "to" : "paulo.r.r.fernandes@gmail.com",
-                    "from" : this.state.email,
+                    "to" : this.state.toEmail,
+                    "from" : this.state.fromEmail,
                     "subject" : this.state.subject,
                     "body" : this.state.body
                 }
@@ -34,7 +35,7 @@ class Form extends Component {
             console.log(res);
             console.log(res.data);
         })
-        alert('A name was submitted: ' + this.state.name);
+        alert('Email was sent to: ' + this.state.toEmail);
         event.preventDefault();
     }
 
@@ -53,9 +54,14 @@ class Form extends Component {
                     onChange={(event) => this.updateField('name', event.target.value)} class="input1"/>
             </div>
             <div className="form-group">
-                <label htmlFor="email">Email:</label>
-                <input type="email" className="form-control" name="email" value={this.state.email}
-                    onChange={(event) => this.updateField('email', event.target.value)} class="input1" />
+                <label htmlFor="fromEmail">From email:</label>
+                <input type="email" className="form-control" name="fromEmail" value={this.state.fromEmail}
+                    onChange={(event) => this.updateField('fromEmail', event.target.value)} class="input1" />
+            </div>
+            <div className="form-group">
+            <label htmlFor="toEmail">To email:</label>
+        <input type="toEmail" className="form-control" name="toEmail" value={this.state.toEmail}
+        onChange={(event) => this.updateField('toEmail', event.target.value)} class="input1" />
             </div>
             <div className="form-group">
                 <label htmlFor="subject">Subject:</label>
